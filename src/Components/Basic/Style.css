@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+* {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  text-transform: capitalize;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.cards {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  grid-auto-flow: dense;
+  align-items: start;
+}
+.cards .card {
+  margin: 0 auto;
+  max-width: 320px;
+  height: fit-content;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+.cards .card:hover {
+  cursor: pointer;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s, transform 0.3s;
+  transform: scale(1.05);
+}
+.cards .card:hover .card-header h3 {
+  transition: color 0.3s;
+  color: royalblue;
+}
+.cards .card .card-hero img {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.cards .card .card-header {
+  padding: 8px 16px;
+}
+.cards .card .card-body {
+  padding: 8px 16px;
+}
+.cards .card .card-footer {
+  padding: 8px 16px 16px 16px;
+  display: flex;
+  gap: 8px;
+}
+.cards .card .card-footer .footer-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.cards .card .card-footer .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.muted {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+@media only screen and (max-width: 1100px) {
+  .cards .card {
+    max-width: 280px;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .cards {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    grid-template-columns: 1fr;
+  }
+  .cards .card {
+    max-width: 400px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .cards {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    grid-template-columns: 1fr;
+  }
+  .cards .card {
+    max-width: 320px;
+  }
+}
+
+
+:root {
+  --primColor: #dcdcdc;
+  --secoColor: #555555;
+  --cornerRad: 4px;
+}
+body {
+  background-color: var(--primColor);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+details {
+  margin: 40px;
+}
+summary {
+  writing-mode: vertical-lr;
+  text-align: center;
+  padding: 12px 10px;
+  width: 23px;
+  height: 17px;
+  background-color: var(--primColor);
+  border: 2px solid var(--secoColor);
+  border-radius: var(--cornerRad);
+  color: var(--secoColor);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: transform 200ms ease-in-out 0s;
+}
+summary::before,
+summary::after {
+  position: static;
+  top: 0;
+  left: 0;
+}
+summary::before {
+  content: "";
+}
+summary::after {
+  content: "III";
+  letter-spacing: -1px;
+}
+summary:hover {
+  transform: scale(1.1);
+}
+summary::marker {
+  font-size: 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .menu {
+  animation-name: menuAnim;
+}
+details[open] summary::before {
+  content: "X";
+}
+details[open] summary::after {
+  content: "";
+}
+.menu {
+  height: 0;
+  width: fit-content;
+  border-radius: var(--cornerRad);
+  background-color: var(--primColor);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  animation: closeMenu 300ms ease-in-out forwards;
+}
+.menu a {
+  padding: 12px 24px;
+  margin: 0 16px;
+  color: var(--secoColor);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  text-align: center;
+  transition: filter 200ms linear 0s;
+}
+.menu a:nth-of-type(1) {
+  padding-top: 24px;
+}
+.menu a:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.menu a:hover {
+  filter: brightness(200%);
+}
+details::before {
+  content: "← Sorting By Category";
+  color: var(--secoColor);
+  position: absolute;
+  margin-left: 80px;
+  padding: 10px 10px;
+  opacity: 0.4;
+}
+details[open]::before {
+  animation: fadeMe 300ms linear forwards;
+}
+@keyframes menuAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 312px;
+  }
+}
+@keyframes fadeMe {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
